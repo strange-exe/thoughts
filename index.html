@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought</title>
+    <style>
+        /* Background styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7e3aea98;
+            /* Fallback color */
+            margin: 0;
+            overflow: hidden;
+            /* Prevent scrollbars */
+            display: flex;
+            /* Use flexbox for centering */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            height: 100vh;
+            /* Full viewport height */
+        }
+
+        /* Video styles */
+        video {
+            position: fixed;
+            /* Fix the video in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            object-fit: cover;
+            /* Cover the entire viewport */
+            z-index: -1;
+            /* Send the video behind other content */
+        }
+
+        /* Glassmorphism card effect */
+        .container {
+            align-items: center;
+            text-align: center;
+            -webkit-backdrop-filter: blur(3px) saturate(187%);
+            backdrop-filter: blur(3px) saturate(187%);
+            background-color: rgba(30, 16, 187, 0.371);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            padding: 2em;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: relative;
+            /* Ensure the container is positioned above the video */
+            z-index: 1;
+            /* Bring the container above the video */
+        }
+        .container
+        h1 {
+            color: #ece3e3;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1.5em;
+            border-radius: 8px;
+            display: none;
+            /* Hide image initially */
+        }
+
+        #generate {
+            padding: 10px 20px;
+            background-color: #ff005d;
+            /* Primary button color */
+            color: white;
+            /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 1em;
+            transition: background-color 0.3s;
+        }
+
+        #generate:hover {
+            background-color: #e31c89;
+            /* Darker on hover */
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            /* Light grey */
+            border-top: 4px solid #651dd94f;
+            /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+            /* Hide loader initially */
+            margin: 1em auto;
+            /* Center the loader */
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Video element for background -->
+    <video autoplay muted loop>
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <h1>Thought</h1>
+        <div class="loader" id="loader"></div>
+        <img id="quoteImage" src="" alt="Thought" />
+        <button id="generate">Generate Thought</button>
+    </div>
+
+    <script>
+        const quoteImage = document.getElementById("quoteImage");
+        const button = document.getElementById("generate");
+        const loader = document.getElementById("loader");
+
+        // Fetch and display the quote image when the page loads
+        generateThought();
+
+        // Event listener for the button
+        button.addEventListener("click", generateThought);
+
+        function generateThought() {
+            // Show loader and hide image
+            loader.style.display = "block";
+            quoteImage.style.display = "none";
+
+            fetch('https://inspirobot.me/api?generate=true')
+                .then(response => response.text())
+                .then(imageUrl => {
+                    // Set the src of the image to the URL returned by the API
+                    quoteImage.src = imageUrl;
+                    quoteImage.onload = () => {
+                                                // Hide loader and show image once it's loaded
+                        loader.style.display = "none";
+                        quoteImage.style.display = "block";
+                    };
+                })
+                .catch(error => {
+                    console.error('Error fetching the quote image:', error);
+                    alert('Oops! Something went wrong. Please try again.');
+                    // Hide loader in case of error
+                    loader.style.display = "none";
+                });
+        }
+    </script>
+    
+</body>
+    
+</html>
