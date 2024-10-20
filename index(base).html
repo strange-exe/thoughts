@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thought</title>
+    <title>Quotes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,10 +80,10 @@
 <body>
 
     <div class="container">
-        <h1>Thought</h1>
+        <h1>Quote</h1>
         <div class="loader" id="loader"></div>
         <img id="quoteImage" src="" alt="Thought" />
-        <button id="generate">Generate Thought</button>
+        <button id="generate">Generate Quote</button>
     </div>
 
     <script>
@@ -92,12 +92,12 @@
         const loader = document.getElementById("loader");
 
         // Fetch and display the quote image when the page loads
-        generateThought();
+        generateQuote();
 
         // Event listener for the button
-        button.addEventListener("click", generateThought);
+        button.addEventListener("click", generateQuote);
 
-        function generateThought() {
+        function generateQuote() {
             // Show loader and hide image
             loader.style.display = "block";
             quoteImage.style.display = "none";
