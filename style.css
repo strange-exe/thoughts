@@ -1,6 +1,10 @@
 /* Root color variable */
 :root {
-    --button-color: #00fffc;
+    --button-color: #000080;
+    --quote-background: rgba(255, 255, 255, 0.1);
+    --quote-color: #fffdef;
+    --author-color: #00fffc;
+    --button-hover-color: rgba(0, 0, 0, 0.6);
 }
 
 /* General reset and styles */
@@ -11,7 +15,10 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-image: url(bg.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,9 +43,11 @@ video {
 }
 
 h1 {
-    margin-bottom: 20px;
-    font-size: 28px;
-    color: #00fffc;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 72px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .quote-box {
@@ -48,27 +57,30 @@ h1 {
     width: 90%;
     max-width: 600px;
     margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 255, 252, 0.3);
+    box-shadow: 0 0 15px rgba(8, 30, 232, 0.724);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    /* Added blur effect */
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .quote {
     font-size: 24px;
     font-style: italic;
     margin-bottom: 10px;
-    color: #fffdef;
+    color: var(--quote-color);
     transition: opacity 0.5s ease-in-out;
 }
 
 .author {
     font-size: 18px;
-    color: #00fffc;
+    color: var(--author-color);
 }
 
-#new-quote,
-#share-image {
+/* Button Styling */
+#new-quote {
+    position: relative;
     padding: 12px 35px;
     background: var(--button-color);
     font-size: 17px;
@@ -77,18 +89,180 @@ h1 {
     border: 3px solid var(--button-color);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(254, 193, 148, 0.5);
-    transition: all .3s ease-in-out;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     margin: 10px;
+    overflow: hidden;
 }
 
-#new-quote:hover,
-#share-image:hover {
+#new-quote:hover {
     background: transparent;
     color: var(--button-color);
     box-shadow: 0 0 25px rgba(254, 193, 148, 0.8);
 }
 
+#new-quote:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 255, 252, 0.5);
+}
+
+/* Hover Effect for Buttons */
+#new-quote:hover {
+    background: transparent;
+    color: var(--button-color);
+    box-shadow: 0 0 25px rgba(254, 193, 148, 0.8);
+}
+
+/* Star Elements */
+.star {
+    position: absolute;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+/* Star Positioning */
+.star-1 {
+    top: 20%;
+    left: 20%;
+    width: 25px;
+}
+
+.star-2 {
+    top: 45%;
+    left: 45%;
+}
+
+.star-3 {
+    top: 40%;
+    left: 40%;
+    width: 5px;
+}
+
+.star-4 {
+    top: 20%;
+    left: 40%;
+    width: 8px;
+}
+
+.star-5 {
+    top: 25%;
+    left: 45%;
+}
+
+.star-6 {
+    top: 5%;
+    left: 50%;
+    width: 5px;
+}
+
+/* Star Hover Transformations */
+#new-quote:hover .star-1 {
+    top: -80%;
+    left: -30%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+
+#new-quote:hover .star-2 {
+    top: -25%;
+    left: 10%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+
+#new-quote:hover .star-3 {
+    top: 55%;
+    left: 25%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+
+#new-quote:hover .star-4 {
+    top: 30%;
+    left: 80%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+
+#new-quote:hover .star-5 {
+    top: 25%;
+    left: 115%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+
+#new-quote:hover .star-6 {
+    top: 5%;
+    left: 60%;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+}
+/* Star Fill Color */
 .fil0 {
     fill: #FFFDEF;
+}
+
+/* Select Image Format Button Styling */
+#save-quote {
+    position: relative;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #f30418, #f54343);
+    /* Gradient background */
+    font-size: 18px;
+    /* Slightly larger font size */
+    font-weight: 600;
+    /* Bold font for prominence */
+    color: #ffffff;
+    /* White text for contrast */
+    border: none;
+    /* No border for a cleaner look */
+    border-radius: 10px;
+    /* More rounded corners */
+    box-shadow: 0 4px 20px rgba(240, 185, 185, 0.3);
+    /* Enhanced shadow for depth */
+    cursor: pointer;
+    margin: 10px;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: 'Arial', sans-serif;
+    /* Consistent font */
+}
+
+/* Add a hover effect with a smooth transition */
+#save-quote:hover {
+    background: linear-gradient(135deg, #aa053f, #f00592);
+    /* Reverse gradient on hover */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+    /* Deeper shadow on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+}
+
+/* Focus styles for accessibility */
+#save-quote:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(239, 4, 169, 0.7);
+    /* Enhanced focus ring */
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 48px;
+    }
+
+    body {
+        background-image: url('bg-mobile.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .quote {
+        font-size: 20px;
+    }
+
+    .author {
+        font-size: 16px;
+    }
 }
