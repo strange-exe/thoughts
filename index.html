@@ -5,24 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="online-learning.gif">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Inspirational Quotes</title>
+    <title>Words To Live By</title>
+    
 </head>
 
 <body>
-    <!-- Video background -->
-    <video autoplay muted loop>
-        <source src="bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <h1>Quotes</h1>
-    <div class="quote-box">
+    <h1>✨ Inspiring Quotes ✨</h1>
+    <div class="quote-box" aria-live="polite">
         <p class="quote" id="quote-text">Hold Up...</p>
         <p class="author" id="quote-author"></p>
     </div>
-    <button id="new-quote" aria-label="Get a new quote" role="button">New Quote</button>
-    <button id="share-image">Share Quote as Image</button>
+    <!-- New Quote Button with Stars -->
+    <button id="new-quote" aria-label="Get a new quote" role="button" style="color: #00fffc;">New Quote
+        <div class="star star-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+        <div class="star star-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+        <div class="star star-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+        <div class="star star-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+        <div class="star star-5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+        <div class="star star-6">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" class="fil0">
+                <path
+                    d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
+            </svg>
+        </div>
+    </button>
+
+    <!-- Share Image Button with Stars -->
+    <button id="save-quote" aria-label="Save">Save Quote as an Image
+    </button>
 
     <script src="script.js"></script>
 </body>
